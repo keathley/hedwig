@@ -256,6 +256,10 @@ defmodule Hedwig.Robot do
     GenServer.call(pid, :responders)
   end
 
+  def handle_file(robot, %Hedwig.Message{} = msg) do
+    GenServer.cast(robot, msg)
+  end
+
   @doc """
   Invokes a user defined `handle_in/2` function, if defined.
 
